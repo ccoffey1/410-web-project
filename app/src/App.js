@@ -3,54 +3,25 @@ import Module from './components/Module'
 import './App.css';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { blue, pink } from '@material-ui/core/colors';
-import { Typography, Grid, Paper } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
     primary: blue,
     secondary: pink,
-  },
-});
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 80
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    height: '80vh'
-  },
+  }
 });
 
 class App extends Component {
   render() {
-    const { classes } = this.props;
 
     return (
-      <MuiThemeProvider theme={theme}>
-        <div>
-        <Module title="Some shitty title" description=""/>
-        </div>
-        <div className={classes.root}>
-          <Grid container spacing={24}>
-            <Grid item xs>
-              <Paper className={classes.paper}></Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}></Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}></Paper>
-            </Grid>
-          </Grid>
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <MuiThemeProvider theme={theme}>
+          <Module title="Integers" category="Variables" description={["Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of  ", <code>man</code>]}/>
+        </MuiThemeProvider>
+      </div>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default App;
