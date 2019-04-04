@@ -26,10 +26,11 @@ const style = theme => ({
     textAlign: 'left',
     color: theme.palette.text.primary,
     height: '80vh',
+    overflow: 'auto'
   },
 
   title: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing.unit,
     textAlign: 'center',
     color: theme.palette.text.secondary,
     fontSize: '2em'
@@ -63,13 +64,13 @@ export class Module extends Component {
           <Grid container spacing={24}>
             <Grid item xs>
               <Paper className={classes.paper}>
-              <div className={classes.title}>
-                {title}
-              </div>
-              <hr />
-              <div>
-                {description}
-              </div>
+                <div className={classes.title}>
+                  {title}
+                </div>
+                <hr noshade/>
+                <div>
+                  {description}
+                </div>
               </Paper>
             </Grid>
             <Grid item xs>
