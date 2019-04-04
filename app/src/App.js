@@ -7,7 +7,9 @@ import { blue, pink } from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: blue,
-    secondary: pink,
+    secondary: {
+      main: '#5ec95c'
+    }
   }
 });
 

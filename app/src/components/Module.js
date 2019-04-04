@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation } from '@material-ui/core';
 
-// This is the last time I use inline styles. We're going to start using App.css. This is disgusting.
+// Inline styles for React components.
 const style = theme => ({
   grow: {
     flexGrow: 1,
@@ -16,16 +16,34 @@ const style = theme => ({
     background: '#72bbf8'
   },
 
+  btnSubmit: {
+    textTransform: 'capitalize',
+    position: 'absolute',
+    color: 'white',
+    bottom: '3%',
+    right: '4%',
+    fontSize: '1.3em'
+  },
+
   spacing: {
     flexGrow: 1,
     marginTop: 67
   },
 
   paper: {
+    position: 'relative',
     padding: theme.spacing.unit * 2,
     textAlign: 'left',
     color: theme.palette.text.primary,
-    height: '80vh',
+    height: '65vh',
+    overflow: 'auto'
+  },
+
+  paperfooter: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'left',
+    color: theme.palette.text.primary,
+    height: '13vh',
     overflow: 'auto'
   },
 
@@ -37,6 +55,7 @@ const style = theme => ({
   }
 })
 
+// The actual module
 export class Module extends Component {
 
     // Submit
@@ -45,10 +64,11 @@ export class Module extends Component {
     }
     
   render() {
-    const {category, title, description, classes} = this.props
+    const {category, title, description, classes, hints} = this.props
 
     return (
       <div style={{position: 'relative', padding: 20}}>
+
         <AppBar>
           <Toolbar>
             <Typography className={classes.grow} variant="h4" color="inherit">
@@ -62,22 +82,35 @@ export class Module extends Component {
 
         <div className={classes.spacing}>
           <Grid container spacing={24}>
-            <Grid item xs>
+            <Grid item xs={4}>
               <Paper className={classes.paper}>
                 <div className={classes.title}>
                   {title}
                 </div>
-                <hr noshade/>
+                <hr/>
                 <div>
                   {description}
                 </div>
               </Paper>
             </Grid>
-            <Grid item xs>
+            <Grid item xs={4}>
               <Paper className={classes.paper}></Paper>
             </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}></Paper>
+            <Grid item xs={4}>
+              <Paper className={classes.paper}>
+                <Fab className={classes.btnSubmit} color="secondary" variant="extended" outlined="secondary">
+                  <i class="far fa-check-circle fa-lg" style={{marginRight: 10}}></i>Run & Submit
+                </Fab>
+              </Paper>
+            </Grid>
+            <Grid item xs={4}>
+              <Paper className={classes.paperfooter}>
+                <h2><i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>Remember:</h2>
+                {hints}
+              </Paper>
+            </Grid>
+            <Grid item xs={4}>
+              <Paper className={classes.paperfooter}></Paper>
             </Grid>
           </Grid>
         </div>
