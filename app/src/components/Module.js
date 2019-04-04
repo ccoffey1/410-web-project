@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow } from '@material-ui/core';
 
 // Inline styles for React components.
 const style = theme => ({
@@ -83,35 +83,43 @@ export class Module extends Component {
         <div className={classes.spacing}>
           <Grid container spacing={24}>
             <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <div className={classes.title}>
-                  {title}
-                </div>
-                <hr/>
-                <div>
-                  {description}
-                </div>
-              </Paper>
+            <Grow in={true}>
+                <Paper className={classes.paper}>
+                  <div className={classes.title}>
+                    {title}
+                  </div>
+                  <hr/>
+                  <div>
+                    {description}
+                  </div>
+                </Paper>
+            </Grow>
             </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}></Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <Fab className={classes.btnSubmit} color="secondary" variant="extended" outlined="secondary">
-                  <i class="far fa-check-circle fa-lg" style={{marginRight: 10}}></i>Run & Submit
-                </Fab>
-              </Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paperfooter}>
-                <h2><i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>Remember:</h2>
-                {hints}
-              </Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paperfooter}></Paper>
-            </Grid>
+
+            <Grow in={true} timeout={1000}>
+              <Grid item xs={4}>
+                <Paper className={classes.paper}></Paper>
+              </Grid>
+            </Grow>
+
+            <Grow in={true} timeout={2000}>
+              <Grid item xs={4}>
+                <Paper className={classes.paper}>
+                  <Fab className={classes.btnSubmit} color="secondary" variant="extended" outlined="secondary">
+                    <i class="far fa-check-circle fa-lg" style={{marginRight: 10}}></i>Run & Submit
+                  </Fab>
+                </Paper>
+              </Grid>
+            </Grow>
+
+            <Grow in={true}>
+              <Grid item xs={4}>
+                <Paper className={classes.paperfooter}>
+                  <h2><i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>Remember:</h2>
+                  {hints}
+                </Paper>
+              </Grid>
+            </Grow>
           </Grid>
         </div>
       </div>
