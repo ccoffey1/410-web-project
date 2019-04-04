@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
- 
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-    <title>API Test</title>
- 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UCode</title>
+
     <!-- bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
- 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <!-- custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet" />
-    
-</head>
-<body>
- 
-<!-- our app will be injected here -->
-<div id="app"></div>
 
-<!-- Add button to test access to database -->
-<button type="button" onclick="submitJson(null, 'api/usercontroller.php', {'action': 'getUsers'})">
-Get Users</button>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-static-top" id="navbar"> </nav>
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center">
+
+            <div class="card col-md-7">
+                <h2>Learn to Program with UCode!</h2>
+                <p>Welcome to UCode, enter a username to start!</p>
+                <div class="card-body">
+                    <form class="form-inline mr-auto">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Enter a username" id="username">
+                        <a href="app/module-1-test.html" class="btn btn-primary">Start</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add button to test access to database -->
+    <!-- <button type="button" onclick="submitJson(null, 'api/usercontroller.php', {'action': 'getUsers'})">
+        Get Users</button> -->
 
 </body>
 
 <!-- jQuery library -->
 <script src="assets/js/jquery.js"></script>
- 
-<!-- bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
- 
+
 <script src="api/poc.js"></script>
 <!-- app js script -->
 <script src="app/app.js"></script>
