@@ -83,8 +83,8 @@ export class Module extends Component {
         <div className={classes.spacing}>
           <Grid container spacing={24}>
             <Grid item xs={4}>
-            <Grow in={true}>
-                <Paper className={classes.paper}>
+            <Grow in={true} timeout={1000}>
+                <Paper className={classes.paper} elevation={5}>
                   <div className={classes.title}>
                     {title}
                   </div>
@@ -96,15 +96,15 @@ export class Module extends Component {
             </Grow>
             </Grid>
 
-            <Grow in={true} timeout={1000}>
+            <Grow in={true} timeout={1500} >
               <Grid item xs={4}>
-                <Paper className={classes.paper}></Paper>
+                <Paper className={classes.paper} elevation={5} />
               </Grid>
             </Grow>
 
             <Grow in={true} timeout={2000}>
               <Grid item xs={4}>
-                <Paper className={classes.paper}>
+                <Paper className={classes.paper} elevation={5}>
                   <Fab className={classes.btnSubmit} color="secondary" variant="extended" outlined="secondary">
                     <i class="far fa-check-circle fa-lg" style={{marginRight: 10}}></i>Run & Submit
                   </Fab>
@@ -112,9 +112,9 @@ export class Module extends Component {
               </Grid>
             </Grow>
 
-            <Grow in={true}>
+            <Grow in={true} timeout={1000}>
               <Grid item xs={4}>
-                <Paper className={classes.paperfooter}>
+                <Paper className={classes.paperfooter} elevation={5}>
                   <h2><i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>Remember:</h2>
                   {hints}
                 </Paper>
