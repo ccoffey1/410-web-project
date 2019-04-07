@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow, Slide, IconButton, Icon, Collapse, Fade } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow, Slide, IconButton, Icon, Collapse, Fade, Drawer } from '@material-ui/core';
 
 // Inline styles for React components.
 const style = theme => ({
@@ -78,12 +78,15 @@ export class Module extends Component {
     
     // Show help
     showHelp = () => {
-      this.setState(state => ({ helpVisible: !state.helpVisible }))
+      this.setState(state => ({ helpVisible: true }))
+    }
+
+    hideHelp = () => {
+      this.setState(state => ({ helpVisible: false }))
     }
 
   render() {
     const {category, title, description, classes, hints} = this.props
-    const { helpVisible } = this.state
 
     return (
       <div className={classes.root}>
@@ -116,7 +119,7 @@ export class Module extends Component {
                   </div>
                   <div>
                     <Fab className={classes.btnHelp} variant='extended' onClick={this.showHelp}>
-                      Stuck?
+                      Hints
                       <i style={{display: 'block'}} class="fas fa-angle-down fa-lg"></i>
                     </Fab>
                   </div>
@@ -141,17 +144,21 @@ export class Module extends Component {
               </Grid>
             </Grow>
 
-            <Grid item xs={4}>
-              <Collapse in={helpVisible} timeout={1000}>
-                <p className={classes.paperfooter} elevation={5}>
-                  <h2>
+            <Drawer 
+              anchor="bottom"
+              open={this.state.helpVisible}
+              onClose={this.hideHelp}>
+                <p>
+                  <h1 style={{marginLeft: 50, marginTop: 0}}>
                     <i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>
                     Remember:
-                  </h2>
-                  {hints}
+                  </h1>
+                  <hr/>
+                  <div style={{marginLeft: 50}}>
+                    {hints}
+                  </div>
                 </p>
-              </Collapse>
-            </Grid>
+            </Drawer>
           </Grid>
         </div>
       </div>
