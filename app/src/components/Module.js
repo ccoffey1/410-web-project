@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow, Slide, IconButton, Icon } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow, Slide, IconButton, Icon, Collapse, Fade } from '@material-ui/core';
 
 // Inline styles for React components.
 const style = theme => ({
+  root: {
+    position: 'relative',
+    padding: 20,
+    overflow: 'auto'
+  },
+
   grow: {
     flexGrow: 1,
     textAlign: 'left'
@@ -23,7 +29,18 @@ const style = theme => ({
   },
 
   btnHelp: {
-    background: 'helpcolor'
+    display: 'block',
+    textTransform: 'capitalize',
+    position: 'absolute',
+    background: '#ffb420',
+    color: 'white',
+    width: '30%',
+    left: '50%',
+    transform: 'translate(-50%, 0)',
+    bottom: '3%',
+    "&:hover": {
+      background: '#bf8200'
+    }
   },
 
   spacing: {
@@ -36,16 +53,7 @@ const style = theme => ({
     padding: theme.spacing.unit * 2,
     textAlign: 'left',
     color: theme.palette.text.primary,
-    height: '65vh',
-    overflow: 'auto'
-  },
-
-  paperfooter: {
-    padding: theme.spacing.unit * 2,
-    paddingTop: 0,
-    textAlign: 'left',
-    color: theme.palette.text.primary,
-    overflow: 'auto'
+    height: '83vh',
   },
 
   title: {
@@ -59,16 +67,26 @@ const style = theme => ({
 // The actual module
 export class Module extends Component {
 
+  state = {
+    helpVisible: false
+  }
+
     // Submit
     runAndSubmit = () => {
         // Todo: Check if user completed activity  
     }
     
+    // Show help
+    showHelp = () => {
+      this.setState(state => ({ helpVisible: !state.helpVisible }))
+    }
+
   render() {
     const {category, title, description, classes, hints} = this.props
+    const { helpVisible } = this.state
 
     return (
-      <div style={{position: 'relative', padding: 20}}>
+      <div className={classes.root}>
 
         <Slide direction="left" in={true} timeout={500}>
           <AppBar>
@@ -77,7 +95,8 @@ export class Module extends Component {
                 {category}
               </Typography>
               <Button color="inherit" className={classes.button}>
-                <i className="fas fa-book-open" style={{marginRight: 10}}></i>My Story
+                <i className="fas fa-book-open" style={{marginRight: 10}}></i>
+                My Story
               </Button>
             </Toolbar>
           </AppBar>
@@ -95,6 +114,12 @@ export class Module extends Component {
                   <div>
                     {description}
                   </div>
+                  <div>
+                    <Fab className={classes.btnHelp} variant='extended' onClick={this.showHelp}>
+                      Stuck?
+                      <i style={{display: 'block'}} class="fas fa-angle-down fa-lg"></i>
+                    </Fab>
+                  </div>
                 </Paper>
             </Grow>
             </Grid>
@@ -109,23 +134,24 @@ export class Module extends Component {
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
                   <Fab className={classes.btnSubmit} color="secondary" variant="extended">
-                    <i class="far fa-check-circle fa-lg" style={{marginRight: 10}}></i>Run & Submit
+                    Run & Submit
+                    <i class="fas fa-angle-right fa-lg" style={{marginLeft: 10}}></i>
                   </Fab>
                 </Paper>
               </Grid>
             </Grow>
 
-            <Grow in={true} timeout={1000}>
-              <Grid item xs={4}>
-                <Paper className={classes.paperfooter} elevation={5}>
+            <Grid item xs={4}>
+              <Collapse in={helpVisible} timeout={1000}>
+                <p className={classes.paperfooter} elevation={5}>
                   <h2>
                     <i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>
                     Remember:
                   </h2>
                   {hints}
-                </Paper>
-              </Grid>
-            </Grow>
+                </p>
+              </Collapse>
+            </Grid>
           </Grid>
         </div>
       </div>
