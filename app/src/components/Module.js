@@ -30,8 +30,8 @@ const style = theme => ({
 
   btnHelp: {
     display: 'block',
+    opacity: 0.5,
     textTransform: 'capitalize',
-    position: 'absolute',
     background: '#ffb420',
     color: 'white',
     width: '30%',
@@ -39,7 +39,8 @@ const style = theme => ({
     transform: 'translate(-50%, 0)',
     bottom: '3%',
     "&:hover": {
-      background: '#bf8200'
+      background: '#ffb420',
+      opacity: 1
     }
   },
 
@@ -54,6 +55,7 @@ const style = theme => ({
     textAlign: 'left',
     color: theme.palette.text.primary,
     height: '83vh',
+    overflow: 'auto'
   },
 
   title: {
@@ -117,6 +119,7 @@ export class Module extends Component {
                   <div>
                     {description}
                   </div>
+                  <hr/>
                   <div>
                     <Fab className={classes.btnHelp} variant='extended' onClick={this.showHelp}>
                       Hints
