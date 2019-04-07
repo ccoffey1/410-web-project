@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow, Slide, IconButton, Icon } from '@material-ui/core';
 
 // Inline styles for React components.
 const style = theme => ({
@@ -11,8 +11,6 @@ const style = theme => ({
 
   button: {
     textTransform: 'capitalize',
-    fontSize: '1.3em',
-    height: '10%',
     background: '#72bbf8'
   },
 
@@ -22,7 +20,10 @@ const style = theme => ({
     color: 'white',
     bottom: '3%',
     right: '4%',
-    fontSize: '1.3em'
+  },
+
+  btnHelp: {
+    background: 'helpcolor'
   },
 
   spacing: {
@@ -41,9 +42,9 @@ const style = theme => ({
 
   paperfooter: {
     padding: theme.spacing.unit * 2,
+    paddingTop: 0,
     textAlign: 'left',
     color: theme.palette.text.primary,
-    height: '13vh',
     overflow: 'auto'
   },
 
@@ -69,16 +70,18 @@ export class Module extends Component {
     return (
       <div style={{position: 'relative', padding: 20}}>
 
-        <AppBar>
-          <Toolbar>
-            <Typography className={classes.grow} variant="h4" color="inherit">
-              {category}
-            </Typography>
-            <Button color="inherit" className={classes.button}>
-              <i className="fas fa-book-open" style={{marginRight: 10}}></i>My Story
-            </Button>
-          </Toolbar>
-        </AppBar>
+        <Slide direction="left" in={true} timeout={500}>
+          <AppBar>
+            <Toolbar>
+              <Typography className={classes.grow} variant="h3" color="inherit">
+                {category}
+              </Typography>
+              <Button color="inherit" className={classes.button}>
+                <i className="fas fa-book-open" style={{marginRight: 10}}></i>My Story
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Slide>
 
         <div className={classes.spacing}>
           <Grid container spacing={24}>
@@ -96,7 +99,7 @@ export class Module extends Component {
             </Grow>
             </Grid>
 
-            <Grow in={true} timeout={1500} >
+            <Grow in={true} timeout={1500}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5} />
               </Grid>
@@ -105,7 +108,7 @@ export class Module extends Component {
             <Grow in={true} timeout={2000}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
-                  <Fab className={classes.btnSubmit} color="secondary" variant="extended" outlined="secondary">
+                  <Fab className={classes.btnSubmit} color="secondary" variant="extended">
                     <i class="far fa-check-circle fa-lg" style={{marginRight: 10}}></i>Run & Submit
                   </Fab>
                 </Paper>
@@ -115,7 +118,10 @@ export class Module extends Component {
             <Grow in={true} timeout={1000}>
               <Grid item xs={4}>
                 <Paper className={classes.paperfooter} elevation={5}>
-                  <h2><i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>Remember:</h2>
+                  <h2>
+                    <i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>
+                    Remember:
+                  </h2>
                   {hints}
                 </Paper>
               </Grid>

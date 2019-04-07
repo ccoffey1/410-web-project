@@ -18,3 +18,10 @@ hr {
   border-top: 1px solid #eee;
   margin: 20px
 }
+
+li {
+  word-break: break-all;
+  padding-left: 2em;
+  text-indent: -1.5em;
+  list-style-position: outside;
+}
