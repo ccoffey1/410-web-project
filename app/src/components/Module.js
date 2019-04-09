@@ -63,6 +63,19 @@ const style = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     fontSize: '2em'
+  },
+
+  codeBlock: {
+    position: 'relative',
+    height: '100%',
+    fontSize: '2vw'
+  },
+
+  code: {
+    position: 'absolute',
+    left: '50%',
+    top: '30%',
+    transform: 'translate(-50%, 0)'
   }
 })
 
@@ -88,28 +101,33 @@ export class Module extends Component {
     }
 
   render() {
-    const {category, title, description, classes, hints} = this.props
+    const {category, title, description, objectives, codeBlock, classes, hints} = this.props
 
     return (
       <div className={classes.root}>
 
-        <Slide direction="left" in={true} timeout={500}>
-          <AppBar>
-            <Toolbar>
-              <Typography className={classes.grow} variant="h3" color="inherit">
-                {category}
-              </Typography>
-              <Button color="inherit" className={classes.button}>
-                <i className="fas fa-book-open" style={{marginRight: 10}}></i>
-                My Story
-              </Button>
-            </Toolbar>
-          </AppBar>
-        </Slide>
+        {/* Top Bar */}   
+        <div>    
+          <Slide direction="left" in={true} timeout={500}>
+            <AppBar>
+              <Toolbar>
+                <Typography className={classes.grow} variant="h3" color="inherit">
+                  {category}
+                </Typography>
+                <Button color="inherit" className={classes.button}>
+                  <i className="fas fa-book-open" style={{marginRight: 10}}></i>
+                  My Story
+                </Button>
+              </Toolbar>
+            </AppBar>
+          </Slide>
+        </div>
 
         <div className={classes.spacing}>
           <Grid container spacing={24}>
             <Grid item xs={4}>
+
+            {/* First Section */}
             <Grow in={true} timeout={1000}>
                 <Paper className={classes.paper} elevation={5}>
                   <div className={classes.title}>
@@ -119,6 +137,9 @@ export class Module extends Component {
                   <div>
                     {description}
                   </div>
+                  <hr/>
+                  <h2>Objectives</h2>
+                    {objectives}
                   <hr/>
                   <div>
                     <Fab className={classes.btnHelp} variant='extended' onClick={this.showHelp}>
@@ -130,12 +151,18 @@ export class Module extends Component {
             </Grow>
             </Grid>
 
+            {/* Middle Section */}
             <Grow in={true} timeout={1500}>
               <Grid item xs={4}>
-                <Paper className={classes.paper} elevation={5} />
+                <Paper className={classes.paper} elevation={5}>
+                  <div className={classes.codeBlock} ref="codeBlock">
+                    <pre className={classes.code}><code>{codeBlock}</code></pre>
+                  </div>
+                </Paper>
               </Grid>
             </Grow>
 
+            {/* Last Section */}
             <Grow in={true} timeout={2000}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
@@ -147,6 +174,7 @@ export class Module extends Component {
               </Grid>
             </Grow>
 
+            {/* Tips Drawer */}
             <Drawer 
               anchor="bottom"
               open={this.state.helpVisible}
