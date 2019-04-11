@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, BottomNavigation, Grow, Slide, IconButton, Icon, Collapse, Fade, Drawer } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
+var ReactFitText = require('react-fittext');
 
 // Inline styles for React components.
 const style = theme => ({
@@ -63,19 +64,6 @@ const style = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     fontSize: '2em'
-  },
-
-  codeBlock: {
-    position: 'relative',
-    height: '100%',
-    fontSize: '2vw'
-  },
-
-  code: {
-    position: 'absolute',
-    left: '50%',
-    top: '30%',
-    transform: 'translate(-50%, 0)'
   }
 })
 
@@ -93,11 +81,11 @@ export class Module extends Component {
     
     // Show help
     showHelp = () => {
-      this.setState(state => ({ helpVisible: true }))
+      this.setState({ helpVisible: true })
     }
 
     hideHelp = () => {
-      this.setState(state => ({ helpVisible: false }))
+      this.setState({helpVisible: false })
     }
 
   render() {
@@ -155,9 +143,13 @@ export class Module extends Component {
             <Grow in={true} timeout={1500}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
-                  <div className={classes.codeBlock} ref="codeBlock">
-                    <pre className={classes.code}><code>{codeBlock}</code></pre>
-                  </div>
+                  <ReactFitText compressor={0.9}>
+                    <pre >
+                      <code style={{fontSize: '0.5em'}}>
+                        {codeBlock}
+                      </code>
+                    </pre>
+                  </ReactFitText>
                 </Paper>
               </Grid>
             </Grow>
