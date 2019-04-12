@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
+import FinishModal from './FinishModal';
 var ReactFitText = require('react-fittext');
 
 // Inline styles for React components.
@@ -71,7 +72,10 @@ const style = theme => ({
 export class Module extends Component {
 
   state = {
-    helpVisible: false
+    success: false,
+    helpVisible: false,
+    openDialog: false,
+    tries: 0
   }
 
     // Submit
@@ -85,7 +89,16 @@ export class Module extends Component {
     }
 
     hideHelp = () => {
-      this.setState({helpVisible: false })
+      this.setState({ helpVisible: false })
+    }
+
+    // Submit
+    handleRunAndSubmit = () => {
+      this.setState({ openDialog: true, tries: (this.state.tries + 1) })
+    }
+
+    handleDialogClose = () => {
+      this.setState({ openDialog: false })
     }
 
   render() {
@@ -132,7 +145,7 @@ export class Module extends Component {
                   <div>
                     <Fab className={classes.btnHelp} variant='extended' onClick={this.showHelp}>
                       Hints
-                      <i style={{display: 'block'}} class="fas fa-angle-down fa-lg"></i>
+                      <i style={{display: 'block'}} className="fas fa-angle-down fa-lg"></i>
                     </Fab>
                   </div>
                 </Paper>
@@ -158,9 +171,9 @@ export class Module extends Component {
             <Grow in={true} timeout={2000}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
-                  <Fab className={classes.btnSubmit} color="secondary" variant="extended">
+                  <Fab className={classes.btnSubmit} onClick={this.handleRunAndSubmit} color="secondary" variant="extended">
                     Run & Submit
-                    <i class="fas fa-angle-right fa-lg" style={{marginLeft: 10}}></i>
+                    <i className="fas fa-angle-right fa-lg" style={{marginLeft: 10}}></i>
                   </Fab>
                 </Paper>
               </Grid>
@@ -173,7 +186,7 @@ export class Module extends Component {
               onClose={this.hideHelp}>
                 <p>
                   <h1 style={{marginLeft: 50, marginTop: 0}}>
-                    <i class="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>
+                    <i className="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>
                     Remember:
                   </h1>
                   <hr/>
@@ -184,6 +197,15 @@ export class Module extends Component {
             </Drawer>
           </Grid>
         </div>
+
+        {/* Dialog after submitting */}
+        <FinishModal
+          open={this.state.openDialog}
+          onClose={this.handleDialogClose}
+          hintRequested={this.showHelp}
+          tries={this.state.tries}
+          success = { false }
+          />
       </div>
     )
   }
