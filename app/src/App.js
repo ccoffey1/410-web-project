@@ -5,6 +5,7 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
 import moduleOne from './module_descriptions/ModuleDescriptions'
 import { StartPage } from './components/StartPage';
+import { StyleGuide } from './components/StyleGuide';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,7 +26,7 @@ class App extends Component {
     return (
       <div>
         <MuiThemeProvider theme={theme}>
-        <StartPage></StartPage>
+        <StyleGuide></StyleGuide>
         </MuiThemeProvider>
       </div>
     );
