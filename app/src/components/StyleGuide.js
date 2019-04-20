@@ -17,7 +17,21 @@ const root = {
 }
 
 const gridStyle = {
+    direction: 'row',
+    textAlign: 'left',
+    overflow: 'auto'
+}
+
+const paperStyle = {
     flexGrow: 1,
+    position: 'relative',
+    textAlign: 'left',
+    height: '83vh',
+    overflow: 'auto'
+  }
+
+const ghostBar = {
+    marginTop: 40,
     marginLeft: 20,
     marginRight: 20,
     position: 'relative',
@@ -26,22 +40,57 @@ const gridStyle = {
 }
 
 const lightBlueStyle = {
-    margin: 10,
+    margin: 20,
     backgroundColor: '#72bbf8'
 }
 
 const greenStyle = {
-    margin: 10,
-    backgroundColor: '#5ec95c'
+    marginTop: 87,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: '#5ec95c',
+    color: '#fafafa'
 }
 const orangeStyle = {
-    margin: 10,
+    margin: 20,
     backgroundColor: '#ffb420'
 }
 
 const blueStyle = {
-    margin: 10,
-    backgroundColor: '#2196f3'
+    margin: 20,
+    backgroundColor: '#2196f3',
+    color: '#fafafa'
+}
+
+const grayStyle = {
+    margin: 20,
+    color: '#616161'
+}
+
+const grayColor = {
+    margin: 20,
+    backgroundColor: '#616161'
+}
+
+const homeButton = {
+    marginLeft: -12,
+    marginRight: 20
+}
+
+const hintButton = {
+    marginTop: 108,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: '#ffb420',
+    color: '#fafafa'
+}
+
+const navButton = {
+    marginTop: 108,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: '#72bbf8',
+    color: '#fafafa'
 }
 
 // The page
@@ -52,29 +101,62 @@ export class StyleGuide extends Component {
             <MuiThemeProvider theme={theme}>
                 <div style={root}>
                     <Grid container spacing={16}>
-                        <Grid item style={gridStyle} xs={12}>
-                            <Typography variant="headline" color="inherit" style={root}> Style Guide </Typography>
+                        <Grid item xs={12}>
+                            <AppBar>
+                                <Toolbar>
+                                    <Button color="inherit" style={homeButton}>
+                                        <i className="fas fa-qrcode" style={{ marginRight: 10 }}></i>
+                                        UCode </Button>
+                                    <Typography variant="h3" color="inherit" style={root}> Style Guide
+                                    </Typography>
+                                </Toolbar>
+                            </AppBar>
                         </Grid>
-                        <Grid item style={gridStyle} xs={12}>
-                        <Paper>
-                        <Typography variant="headline"> Typography </Typography>
-                            <Typography variant="h1"> h1 </Typography>
-                            <Typography variant="h2"> h2 </Typography>
-                            <Typography variant="h3"> h3 </Typography>
-                            <Typography variant="h4"> h4 </Typography>
+                        <Grid item style={ghostBar} xs={12}></Grid>
+                        <Grid item style={gridStyle} xs={4}>
+                            <Paper style = {paperStyle}>
+                                <Typography variant="h3" style={grayStyle}> Typography </Typography>
+                                <Typography variant="h1" style={{ margin: 20 }}> h1 </Typography>
+                                <Typography variant="h2" style={{ margin: 20 }}> h2 </Typography>
+                                <Typography variant="h3" style={{ margin: 20 }}> h3 </Typography>
+                                <Typography variant="h4" style={{ margin: 20 }}> h4 </Typography>
+                            </Paper>
+                        </Grid>
+                        <Grid item style={gridStyle} xs={4}>
+                        <Paper style={paperStyle}>
+                        <Grid container spacing={12}>
+                        <Grid item xs={2} sm ={6}>
+                        <Typography variant="h3" style = {grayStyle}> Colors </Typography>
+                           <Avatar style={blueStyle}></Avatar>
+                            <Typography variant="h6" style={{ margin: 20 }}> #2196f3 </Typography>
+                            <Avatar style={lightBlueStyle}></Avatar>
+                            <Typography variant="h6" style={{ margin: 20 }}> #72bbf8 </Typography>
+                            <Avatar style={grayColor}></Avatar>
+                            <Typography variant="h6" style={{ margin: 20 }}> #616161 </Typography>
+                            </Grid>
+                            <Grid item xs={2}>
+                            <Avatar style={greenStyle}></Avatar>
+                            <Typography variant="h6" style={{ margin: 20 }}> #5ec95c </Typography>
+                            <Avatar style={orangeStyle}></Avatar>
+                        <Typography variant="h6" style={{ margin: 20 }}> #ffb420 </Typography>
+                        </Grid>
+                        </Grid>
                         </Paper>
                         </Grid>
-                        <Grid item style={gridStyle} xs={12}>
-                            <Typography variant="headline" color="inherit" style={root}> Colors </Typography>
+                        <Grid item style={gridStyle} xs={4}>
+                        <Paper style={paperStyle}>
+                        <Grid container spacing={12}>
+                        <Grid item xs={2} sm ={6}>
+                        <Typography variant="h3" style = {grayStyle}> Buttons </Typography>
+                           <Button style={blueStyle}> Home </Button>
+                           <Button style={greenStyle}> Run/Submit </Button>
+                            </Grid>
+                            <Grid item xs={2}>
+                            <Button style={hintButton}> Hint </Button>
+                            <Button style={navButton}> Navigation </Button>
                         </Grid>
-                        <Grid item style={gridStyle} xs={6}>
-                            <div> <Avatar style={blueStyle}></Avatar>
-                            <Typography variant="h6" color="inherit" style={root}> #2196f3 </Typography></div>
-                            <Avatar style={lightBlueStyle}></Avatar>
-                            <Typography variant="h6" color="inherit" style={root}> #72bbf8 </Typography>
-                            <Avatar style={lightBlueStyle}></Avatar>
-                            <Avatar style={greenStyle}></Avatar>
-                            <Avatar style={orangeStyle}></Avatar>
+                        </Grid>
+                        </Paper>
                         </Grid>
                     </Grid>
                 </div>
