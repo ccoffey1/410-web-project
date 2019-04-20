@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
 import FinishModal from './FinishModal';
+import Profile from './Profile';
 var ReactFitText = require('react-fittext');
 
 // Inline styles for React components.
@@ -75,14 +76,9 @@ export class Module extends Component {
     success: false,
     helpVisible: false,
     openDialog: false,
-    tries: 0
-  }
-
-    // Submit
-    runAndSubmit = () => {
-        // Todo: Check if user completed activity  
-    }
-    
+    tries: 0,
+    openProfile: false
+  } 
     // Show help
     showHelp = () => {
       this.setState({ helpVisible: true })
@@ -101,6 +97,19 @@ export class Module extends Component {
       this.setState({ openDialog: false })
     }
 
+    // Profile
+    handleProfileOpen = () => {
+      this.setState({
+        openProfile: true
+      })
+    }
+
+    handleProfileClose = () => {
+      this.setState({
+        openProfile: false
+      })
+    }
+
   render() {
     const {category, title, description, objectives, codeBlock, classes, hints} = this.props
 
@@ -109,13 +118,13 @@ export class Module extends Component {
 
         {/* Top Bar */}   
         <div>    
-          <Slide direction="left" in={true} timeout={500}>
+          <Slide direction="top" in={true} timeout={500}>
             <AppBar>
               <Toolbar>
                 <Typography className={classes.grow} variant="h3" color="inherit">
                   {category}
                 </Typography>
-                <Button color="inherit" className={classes.button}>
+                <Button color="inherit" className={classes.button} onClick={this.handleProfileOpen}>
                   <i className="fas fa-book-open" style={{marginRight: 10}}></i>
                   My Story
                 </Button>
@@ -206,6 +215,12 @@ export class Module extends Component {
           tries={this.state.tries}
           success = { false }
           />
+
+        {/* Profile Dialog */}
+        <Profile
+          open={this.state.openProfile}
+          onClose={this.handleProfileClose}
+        />
       </div>
     )
   }
