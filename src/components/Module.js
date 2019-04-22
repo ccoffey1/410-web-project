@@ -95,8 +95,8 @@ export class Module extends Component {
     }
 
     // test submit with animation
-    handleSubmit = () => {
-        document.getElementById("svg").beginElement();
+    handleTestAnimation = () => {
+      
     }
 
     handleDialogClose = () => {
@@ -187,7 +187,7 @@ export class Module extends Component {
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
                 <Smiley></Smiley>
-                  <Fab className={classes.btnSubmit} onClick={this.handleSubmit} color="secondary" variant="extended">
+                  <Fab className={classes.btnSubmit} onClick={this.handleRunAndSubmit} color="secondary" variant="extended">
                     Run & Submit
                     <i className="fas fa-angle-right fa-lg" style={{marginLeft: 10}}></i>
                   </Fab>
