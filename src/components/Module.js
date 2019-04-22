@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Smiley from './Smiley';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
 import FinishModal from './FinishModal';
@@ -93,6 +94,11 @@ export class Module extends Component {
       this.setState({ openDialog: true, tries: (this.state.tries + 1) })
     }
 
+    // test submit with animation
+    handleSubmit = () => {
+        document.getElementById("svg").beginElement();
+    }
+
     handleDialogClose = () => {
       this.setState({ openDialog: false })
     }
@@ -180,7 +186,8 @@ export class Module extends Component {
             <Grow in={true} timeout={2000}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
-                  <Fab className={classes.btnSubmit} onClick={this.handleRunAndSubmit} color="secondary" variant="extended">
+                <Smiley></Smiley>
+                  <Fab className={classes.btnSubmit} onClick={this.handleSubmit} color="secondary" variant="extended">
                     Run & Submit
                     <i className="fas fa-angle-right fa-lg" style={{marginLeft: 10}}></i>
                   </Fab>
