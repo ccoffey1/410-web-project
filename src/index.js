@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { install } from '@material-ui/styles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Module from './components/Module'
+import Profile from './components/Module'
 
 install();
 ReactDOM.render(
@@ -13,6 +14,7 @@ ReactDOM.render(
         <div>
           <Route exact path="/" component={App} />
           <Route path="/Module" component={Module} />
+          <Route path="/Profile" component={Profile} />
         </div>
     </Router>,
     document.getElementById('root')
