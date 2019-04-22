@@ -99,7 +99,7 @@ export default class Profile extends Component {
             <Paper style={paperStyle}>
                   <Typography variant="display1" style={grayStyle}> Modules Completed </Typography>
                   <Typography variant="subtitle1" style={{ marginLeft: 20, marginTop: 0 }}> Click the module to replay </Typography>
-                  <Typography variant="h5" style={{margin: 20}}> Module 1 - Variables </Typography>
+                  <Link to="/Module"><Typography variant="h5" style={{margin: 20}}> Module 1 - Variables </Typography></Link>
             </Paper>
           </Grid>
         </Grid>
