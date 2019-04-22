@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper } from '@material-ui/core';
+import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid } from '@material-ui/core';
 import { blue, red } from '@material-ui/core/colors';
 
 function Transition(props) {
@@ -29,8 +29,7 @@ export default class Profile extends Component {
           fullScreen
           open={open}
           onClose={this.handleClose}
-          TransitionComponent={Transition}
-        >
+          TransitionComponent={Transition}>
             <AppBar style={{position: 'relative'}}>
               <Toolbar>
                 <Typography variant="h6" color="inherit" style={{flex: 1}}>
@@ -45,6 +44,12 @@ export default class Profile extends Component {
               </Toolbar>
             </AppBar>
         </Dialog>
+      <Grid container>
+      <Grid item>
+      <Paper></Paper>
+      </Grid>
+
+      </Grid>
       </div>
     )
   }
