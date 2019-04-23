@@ -13,7 +13,7 @@ ReactDOM.render(
     <Router>
         <div>
           <Route exact path="/" component={App} />
-          <Route path="/Module" component={Module} />
+          <Route path="/Module1" render={(routeProps) => <Module {...routeProps} category="Variables"/>} />
           <Route path="/Profile" component={Profile} />
         </div>
     </Router>,
