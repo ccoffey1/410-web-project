@@ -4,6 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
 import FinishModal from './FinishModal';
 import Profile from './Profile';
+import hljs from 'highlight.js/lib/highlight';
+import java from 'highlight.js/lib/languages/java'
+import 'highlight.js/styles/vs.css';
+
 var ReactFitText = require('react-fittext');
 
 // Inline styles for React components.
@@ -119,13 +123,17 @@ export class Module extends Component {
       })
     }
 
+    componentDidMount() {
+      hljs.registerLanguage('java', java)
+      hljs.highlightBlock(this.node)
+    }
+
   render() {
     const {category, title, description, objectives, codeBlock, classes, hints} = this.props
     const {submit} = this.state.submit;
     
     return (
       <div className={classes.root}>
-
         {/* Top Bar */}   
         <div>    
           <Slide direction="top" in={true} timeout={500}>
@@ -175,13 +183,13 @@ export class Module extends Component {
             <Grow in={true} timeout={1500}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
+                <pre ref={(node) => this.node = node}>
                   <ReactFitText compressor={0.9}>
-                    <pre >
-                      <code style={{fontSize: '0.5em'}}>
+                      <code className="java" style={{fontSize: '0.5em'}}>
                         {codeBlock}
                       </code>
-                    </pre>
                   </ReactFitText>
+                  </pre>
                 </Paper>
               </Grid>
             </Grow>
