@@ -79,9 +79,6 @@ export default class Profile extends Component {
               <Typography variant="h6" color="inherit" style={{ flex: 1 }}>
                 My Story
                 </Typography>
-              <Typography variant="h6" color="inherit" style={{ flex: 0.5 }}>
-                Progress
-                </Typography>
               <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
                 <i class="fas fa-times fa-lg"></i>
               </IconButton>

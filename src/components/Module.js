@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Ball from './Ball';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
 import FinishModal from './FinishModal';
@@ -77,7 +78,8 @@ export class Module extends Component {
     helpVisible: false,
     openDialog: false,
     tries: 0,
-    openProfile: false
+    openProfile: false,
+    submit: false
   } 
     // Show help
     showHelp = () => {
@@ -91,6 +93,13 @@ export class Module extends Component {
     // Submit
     handleRunAndSubmit = () => {
       this.setState({ openDialog: true, tries: (this.state.tries + 1) })
+    }
+
+    // test submit with animation
+    handleTestAnimation = () => {
+      this.setState({
+        submit: !this.state.submit
+      });
     }
 
     handleDialogClose = () => {
@@ -112,7 +121,8 @@ export class Module extends Component {
 
   render() {
     const {category, title, description, objectives, codeBlock, classes, hints} = this.props
-
+    const {submit} = this.state.submit;
+    
     return (
       <div className={classes.root}>
 
@@ -180,7 +190,8 @@ export class Module extends Component {
             <Grow in={true} timeout={2000}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
-                  <Fab className={classes.btnSubmit} onClick={this.handleRunAndSubmit} color="secondary" variant="extended">
+                <svg style={{ width: "300", height: "300" , marginTop: "20"}}> <Ball x={this.state.submit ? 10 : 250} /> </svg>
+                  <Fab className={classes.btnSubmit} onClick={this.handleTestAnimation} color="secondary" variant="extended">
                     Run & Submit
                     <i className="fas fa-angle-right fa-lg" style={{marginLeft: 10}}></i>
                   </Fab>
