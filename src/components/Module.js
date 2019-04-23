@@ -79,55 +79,64 @@ export class Module extends Component {
     openDialog: false,
     tries: 0,
     openProfile: false,
-    submit: false
-  } 
-    // Show help
-    showHelp = () => {
-      this.setState({ helpVisible: true })
-    }
+    submit: false,
+    nextModule: false
+  }
+  // Show help
+  showHelp = () => {
+    this.setState({ helpVisible: true })
+  }
 
-    hideHelp = () => {
-      this.setState({ helpVisible: false })
-    }
+  hideHelp = () => {
+    this.setState({ helpVisible: false })
+  }
 
-    // Submit
-    handleRunAndSubmit = () => {
-      this.setState({ openDialog: true, tries: (this.state.tries + 1) })
-    }
+  // Submit
+  handleRunAndSubmit = () => {
+    this.setState({ openDialog: true, tries: (this.state.tries + 1) })
+  }
 
-    // test submit with animation
-    handleTestAnimation = () => {
-      this.setState({
-        submit: !this.state.submit
-      });
-    }
+  // test submit with animation
+  handleTestAnimation = () => {
+    this.setState({
+      success: true,
+      submit: !this.state.submit
+    });
+  }
 
-    handleDialogClose = () => {
-      this.setState({ openDialog: false })
-    }
+  //  go to next module
+  handleNextModule = () => {
+    this.setState({
+      nextModule: !this.state.nextModule
+    });
+  }
 
-    // Profile
-    handleProfileOpen = () => {
-      this.setState({
-        openProfile: true
-      })
-    }
+  handleDialogClose = () => {
+    this.setState({ openDialog: false })
+  }
 
-    handleProfileClose = () => {
-      this.setState({
-        openProfile: false
-      })
-    }
+  // Profile
+  handleProfileOpen = () => {
+    this.setState({
+      openProfile: true
+    })
+  }
+
+  handleProfileClose = () => {
+    this.setState({
+      openProfile: false
+    })
+  }
 
   render() {
-    const {category, title, description, objectives, codeBlock, classes, hints} = this.props
-    const {submit} = this.state.submit;
-    
+    const { category, title, description, objectives, codeBlock, classes, hints } = this.props
+    const { submit } = this.state.submit;
+
     return (
       <div className={classes.root}>
 
-        {/* Top Bar */}   
-        <div>    
+        {/* Top Bar */}
+        <div>
           <Slide direction="top" in={true} timeout={500}>
             <AppBar>
               <Toolbar>
@@ -135,7 +144,7 @@ export class Module extends Component {
                   {category}
                 </Typography>
                 <Button color="inherit" className={classes.button} onClick={this.handleProfileOpen}>
-                  <i className="fas fa-book-open" style={{marginRight: 10}}></i>
+                  <i className="fas fa-book-open" style={{ marginRight: 10 }}></i>
                   My Story
                 </Button>
               </Toolbar>
@@ -147,28 +156,28 @@ export class Module extends Component {
           <Grid container spacing={24}>
             <Grid item xs={4}>
 
-            {/* First Section */}
-            <Grow in={true} timeout={1000}>
+              {/* First Section */}
+              <Grow in={true} timeout={1000}>
                 <Paper className={classes.paper} elevation={5}>
                   <div className={classes.title}>
                     {title}
                   </div>
-                  <hr/>
+                  <hr />
                   <div>
                     {description}
                   </div>
-                  <hr/>
+                  <hr />
                   <h2>Objectives</h2>
-                    {objectives}
-                  <hr/>
+                  {objectives}
+                  <hr />
                   <div>
                     <Fab className={classes.btnHelp} variant='extended' onClick={this.showHelp}>
                       Hints
-                      <i style={{display: 'block'}} className="fas fa-angle-down fa-lg"></i>
+                      <i style={{ display: 'block' }} className="fas fa-angle-down fa-lg"></i>
                     </Fab>
                   </div>
                 </Paper>
-            </Grow>
+              </Grow>
             </Grid>
 
             {/* Middle Section */}
@@ -177,11 +186,15 @@ export class Module extends Component {
                 <Paper className={classes.paper} elevation={5}>
                   <ReactFitText compressor={0.9}>
                     <pre >
-                      <code style={{fontSize: '0.5em'}}>
+                      <code style={{ fontSize: '0.5em' }}>
                         {codeBlock}
                       </code>
                     </pre>
                   </ReactFitText>
+                  <Fab className={classes.btnSubmit} onClick={this.handleTestAnimation} color="secondary" variant="extended">
+                    Run
+                    <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
+                  </Fab>
                 </Paper>
               </Grid>
             </Grow>
@@ -190,30 +203,30 @@ export class Module extends Component {
             <Grow in={true} timeout={2000}>
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
-                <svg style={{ width: "300", height: "300" , marginTop: "20"}}> <Ball x={this.state.submit ? 10 : 250} /> </svg>
-                  <Fab className={classes.btnSubmit} onClick={this.handleTestAnimation} color="secondary" variant="extended">
-                    Run & Submit
-                    <i className="fas fa-angle-right fa-lg" style={{marginLeft: 10}}></i>
+                  <svg style={{ width: "300", height: "300", marginTop: "20" }}> <Ball x={this.state.submit ? 10 : 250} /> </svg>
+                  <Fab className={classes.btnSubmit} onClick={this.handleNextModule} disabled ={!this.state.success} color="secondary" variant="extended">
+                    Next
+                    <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
                   </Fab>
                 </Paper>
               </Grid>
             </Grow>
 
             {/* Tips Drawer */}
-            <Drawer 
+            <Drawer
               anchor="bottom"
               open={this.state.helpVisible}
               onClose={this.hideHelp}>
-                <p>
-                  <h1 style={{marginLeft: 50, marginTop: 0}}>
-                    <i className="fas fa-exclamation-triangle" style={{marginRight: 10, color: '#ffb420'}}/>
-                    Remember:
+              <p>
+                <h1 style={{ marginLeft: 50, marginTop: 0 }}>
+                  <i className="fas fa-exclamation-triangle" style={{ marginRight: 10, color: '#ffb420' }} />
+                  Remember:
                   </h1>
-                  <hr/>
-                  <div style={{marginLeft: 50}}>
-                    {hints}
-                  </div>
-                </p>
+                <hr />
+                <div style={{ marginLeft: 50 }}>
+                  {hints}
+                </div>
+              </p>
             </Drawer>
           </Grid>
         </div>
@@ -224,8 +237,8 @@ export class Module extends Component {
           onClose={this.handleDialogClose}
           hintRequested={this.showHelp}
           tries={this.state.tries}
-          success = { false }
-          />
+          success={false}
+        />
 
         {/* Profile Dialog */}
         <Profile
