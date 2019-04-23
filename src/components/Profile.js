@@ -79,9 +79,6 @@ export default class Profile extends Component {
               <Typography variant="h6" color="inherit" style={{ flex: 1 }}>
                 My Story
                 </Typography>
-              <Typography variant="h6" color="inherit" style={{ flex: 0.5 }}>
-                Progress
-                </Typography>
               <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
                 <i class="fas fa-times fa-lg"></i>
               </IconButton>
@@ -99,7 +96,7 @@ export default class Profile extends Component {
             <Paper style={paperStyle}>
                   <Typography variant="display1" style={grayStyle}> Modules Completed </Typography>
                   <Typography variant="subtitle1" style={{ marginLeft: 20, marginTop: 0 }}> Click the module to replay </Typography>
-                  <Link to="/Module"><Typography variant="h5" style={{margin: 20}}> Module 1 - Variables </Typography></Link>
+                  <Link to="/Module1"><Typography variant="h5" style={{margin: 20}}> Module 1 - Variables </Typography></Link>
             </Paper>
           </Grid>
         </Grid>
