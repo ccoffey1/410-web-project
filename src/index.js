@@ -59,9 +59,8 @@ ReactDOM.render(
             objectives="Fill out the text boxes, for a is 0, a is less than b, and increase a by 1 everytime until a is larger than b. When a is less than b, program will print 'Hello World', after you finish the code, think about how many times will the program print out 'Hello World'."
             hints={["Consider following hints:", <li>The initialization expression initializes the loop; it's executed once, as the loop begins.</li>, <li>When the termination expression evaluates to false, the loop terminates.</li>, <li>The increment expression is invoked after each iteration through the loop; it is perfectly acceptable for this expression to increment or decrement a value.</li>]}
             codeBlock={["//Master JAVA  For loop! \n\npublic static void main(String args[]) {\n\n//Create a for loop \nint b = 5;\n\n", <input type='text' id='bb'placeholder="for notation"/>, "(", <input type = 'text' id='if' placeholder='initialize a, set it to 0, a is less then b, increase a by 1'/>,")","{\n\tSystem.out.print('Hello World');\n}","\n}"]}></Module>}/>
-          <Route path="/Profile" component={Profile} />
         </div>
-    </Router>,
+    </Router>
     </MuiThemeProvider>,
     document.getElementById('root')
   )
