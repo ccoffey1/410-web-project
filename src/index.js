@@ -9,8 +9,7 @@ import Module from './components/Module'
 import Profile from './components/Module'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { blue } from '@material-ui/core/colors';
-import { OtherStories } from './components/OtherStories'
-
+import { StartPage } from './components/StartPage'
 install();
 
 const theme = createMuiTheme({
@@ -29,7 +28,7 @@ ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <Router>
         <div>
-          <Route exact path="/" component={App} />
+          <Route exact path="/" component={StartPage} />
           <Route path="/Module1" render={(routeProps) => <Module {...routeProps} title="Basic Java: Variables"
             category="Welcome!"
             description={"Welcome to Undici's Java coding game. These will walk you through Java development step by step. First, you'll start by assigning names to the variables.You can edit code in the text box. Do you see the code in the middle? That's how you declare a variable. String and int are variable types."}
