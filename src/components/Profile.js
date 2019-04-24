@@ -21,24 +21,9 @@ const paperStyle = {
   overflow: 'auto'
 }
 
-const lightBlueStyle = {
+const isDisabled = {
   margin: 20,
-  backgroundColor: '#72bbf8'
-}
-
-const greenStyle = {
-  backgroundColor: '#5ec95c',
-  color: '#fafafa'
-}
-const orangeStyle = {
-  margin: 20,
-  backgroundColor: '#ffb420'
-}
-
-const blueStyle = {
-  margin: 20,
-  backgroundColor: '#2196f3',
-  color: '#fafafa'
+  color: '#BDBDBD'
 }
 
 const grayStyle = {
@@ -95,12 +80,11 @@ export default class Profile extends Component {
           <Grid item style={gridStyle} xs={8}>
             <Paper style={paperStyle}>
                   <Typography variant="display1" style={grayStyle}> Modules Completed </Typography>
-                  <Typography variant="subtitle1" style={{ marginLeft: 20, marginTop: 0 }}> Click the module to replay </Typography>
-                  <Link to="/Module1"><Typography variant="h5" style={{margin: 20}}> Module 1 - Variables </Typography></Link>
-                  <Link to="/Module2"><Typography variant="h5" style={{margin: 20}}> Module 2 - If statement </Typography></Link>
-                  <Link to="/Module3"><Typography variant="h5" style={{margin: 20}}> Module 3 - If else statement </Typography></Link>
-                  <Link to="/Module4"><Typography variant="h5" style={{margin: 20}}> Module 4 - While loop </Typography></Link>
-                  <Link to="/Module5"><Typography variant="h5" style={{margin: 20}}> Module 5 - For loop </Typography></Link>
+                  <Link to="/Module1" style={{color: '#1565C0'}}><Typography variant="h5" style={{color: '#1565C0', margin: 20}}> Module 1 - Variables </Typography></Link>
+                  <Link to="/Module2" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()} > <Typography variant="h5" style={isDisabled}> Module 2 - If statement </Typography></Link>
+                  <Link to="/Module3" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 3 - If else statement </Typography></Link>
+                  <Link to="/Module4" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 4 - While loop </Typography></Link>
+                  <Link to="/Module5" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 5 - For loop </Typography></Link>
             </Paper>
           </Grid>
         </Grid>
