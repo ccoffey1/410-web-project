@@ -194,7 +194,7 @@ export class Module extends Component {
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
                   <pre ref={(node) => this.node = node}>
-                    <ReactFitText compressor={0.9}>
+                    <ReactFitText compressor={1.3}>
                         <code style={{ fontSize: '0.5em' }}>
                           {codeBlock}
                         </code>
