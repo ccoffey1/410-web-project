@@ -86,6 +86,7 @@ export class Module extends Component {
     submit: false,
     nextModule: false
   }
+  
   // Show help
   showHelp = () => {
     this.setState({ helpVisible: true })
