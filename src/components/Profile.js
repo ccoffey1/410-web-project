@@ -100,7 +100,7 @@ export default class Profile extends Component {
           <Grid item style={gridStyle} xs={8}>
             <Paper style={paperStyle}>
                   <Typography variant="display1" style={grayStyle}> Modules Completed </Typography>
-                  <Link to="/Module1" style={{color: '#1565C0'}}><Typography variant="h5" style={{color: '#1565C0', margin: 20}}> Module 1 - Variables </Typography></Link>
+                  <Link to="/Module1" style={{color: '#1565C0'}} onClick = {this.props.handleClose}><Typography variant="h5" style={{color: '#1565C0', margin: 20}}> Module 1 - Variables </Typography></Link>
                   <Link to="/Module2" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()} > <Typography variant="h5" style={isDisabled}> Module 2 - If statement </Typography></Link>
                   <Link to="/Module3" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 3 - If else statement </Typography></Link>
                   <Link to="/Module4" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 4 - While loop </Typography></Link>
