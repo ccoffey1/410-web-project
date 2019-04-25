@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid, Button, Fab } from '@material-ui/core';
-import { Redirect, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import OtherStories from './OtherStories';
 
 const root = {
