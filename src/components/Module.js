@@ -140,7 +140,6 @@ export class Module extends Component {
 
   render() {
     const { category, title, description, objectives, codeBlock, classes, hints } = this.props
-    const { submit } = this.state.submit;
 
     return (
       <div className={classes.root}>
@@ -195,7 +194,7 @@ export class Module extends Component {
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
                   <pre ref={(node) => this.node = node}>
-                    <ReactFitText compressor={1.6}>
+                    <ReactFitText compressor={0.7}>
                         <code style={{ fontSize: '0.5em' }}>
                           {codeBlock}
                         </code>

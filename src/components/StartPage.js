@@ -88,7 +88,7 @@ export class StartPage extends Component {
   render() {
     return (
       <div>
-        <Slide in={this.state.show} direction="down" timeout={1500} onExited={this.handleClosed}>
+        <Slide in={this.state.show} direction="down" timeout={1000} onExited={this.handleClosed}>
           <div style={frame}>
             <div style={titleContainer}>
               <hr style={line}/>
