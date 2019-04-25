@@ -90,7 +90,7 @@ export default class Profile extends Component {
           <Grid item style={gridStyle} xs={4}>
             <Paper style={paperStyle}>
               <Typography variant="display1" style={grayStyle}> Your Story So Far </Typography>
-              <Typography variant="body1" style={{ margin: 20 }}> Jane bought a green hat today. </Typography>
+              <Typography variant="body2" style={{ margin: 20 }}> Mysteriously, an orange ball appeared in your backyard. </Typography>
               <Fab style={otherStoriesBtnStyle} onClick={this.showOtherStories} variant="extended" color="secondary">
                 <i className="fas fa-book-open" style={{ marginRight: 10 }}></i>
                 Check out other users' stories
