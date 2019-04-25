@@ -35,7 +35,7 @@ ReactDOM.render(
             description={"First, we're going to learn about variables. Variables in code, like in math, can take on any value that you assign to them. However, unlike variables in math, Java variables need to be assigned a type. The type of the variable determines the value it can hold. So, for example, the type 'String' can hold text data, and the type 'int' can hold integer values. There are more types in Java, but we'll start by looking at an example of type String."}
             objectives={"Now, let's try to assign a variable name. Let's call the string variable var1 and assign the value of cat to it. Then let's call the int variable var2 and assign the number 3 to it."}
             hints={["Consider following examples:", <li>Don't forget the quotation marks!</li>]}
-            codeBlock={["//Master JAVA Variables! \n\npublic static void main(String args[]){\n\n//Create a string variable\nstring hairColor =",<input type='text' id='bb'placeholder="e.g. red"/>,"\n\n}"]}/>} />
+            codeBlock={["//Master JAVA Variables! \n\npublic static void main(String args[]){\n\n//Create a string variable\nstring ballColor =",<input type='text' id='bb'placeholder="e.g. red"/>,"\n\n}"]}/>} />
           <Route path="/Module2" render={(routeProps) => <Module {...routeProps} title="Basic Java: If statement"
             category="Welcome!"
             description={"WOW! You are getting it so fast. Now, let's dig into conditional statements. The first conditional statement is if statement, you will use if statement a lot on the way to become a professional programmer. Java supports the usual logical conditions, you can use these conditions to perform different actions for different dicisions."}
