@@ -34,7 +34,7 @@ ReactDOM.render(
             category="Welcome!"
             description={"First, we're going to learn about variables. Variables in code, like in math, can take on any value that you assign to them. However, unlike variables in math, Java variables need to be assigned a type. The type of the variable determines the value it can hold. So, for example, the type 'String' can hold text data, and the type 'int' can hold integer values. There are more types in Java, but we'll start by looking at an example of type String."}
             objectives={"Now, let's try to assign a value to a variable. In the code on the next panel there is a variable called 'ballColor.' Change its value to 'orange.' Click 'Run' to see your code in action."}
-            hints={["Consider following examples:", <li>Don't forget the quotation marks!!!!!!!!!!!!!!!!!</li>]}
+            hints={["Consider following examples:", <li>Don't forget the quotation marks!!!!!!!!!!!!!!!!!</li>,<li>Don't forget the semicolon as well!!!!!!!!!!!!!!!!!!!!!</li>]}
             codeBlock={["//Master JAVA Variables! \n\npublic static void main(String args[]){\n\n//Create a string variable\n\tstring ballColor =",<input type='text' id='bb' placeholder='e.g. purple'/>,"\n\n}"]}/>} />
           <Route path="/Module2" render={(routeProps) => <Module {...routeProps} title="Basic Java: If statement"
             category="Welcome!"
