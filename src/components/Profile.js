@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid, Button } from '@material-ui/core';
-import { blue, red } from '@material-ui/core/colors';
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom"
+import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid, Button, Fab } from '@material-ui/core';
+import { Redirect, Link } from "react-router-dom"
+import OtherStories from './OtherStories';
 
 const root = {
   flexGrow: 1
@@ -21,6 +21,14 @@ const paperStyle = {
   overflow: 'auto'
 }
 
+const otherStoriesBtnStyle = {
+  position: 'absolute',
+  color: 'white',
+  textTransform: 'capitalize',
+  bottom: '5%',
+  right: '5%'
+}
+
 const isDisabled = {
   margin: 20,
   color: '#BDBDBD'
@@ -37,16 +45,24 @@ function Transition(props) {
 
 export default class Profile extends Component {
 
+  state = {
+    otherStoriesOpened: false
+  }
+
   handleClose = () => {
     this.props.onClose();
   }
 
-  verticalLine = {
-    position: 'absolute',
-    borderLeft: '6px solid',
-    borderColor: '#FEDEDE',
-    height: '100vh',
-    right: '38%'
+  handleOtherStoriesClosed = () => {
+    this.setState({
+      otherStoriesOpened: false
+    })
+  }
+
+  showOtherStories = () => {
+    this.setState({
+      otherStoriesOpened: true
+    })
   }
 
   render() {
@@ -75,6 +91,10 @@ export default class Profile extends Component {
             <Paper style={paperStyle}>
               <Typography variant="display1" style={grayStyle}> Your Story So Far </Typography>
               <Typography variant="body1" style={{ margin: 20 }}> Jane bought a green hat today. </Typography>
+              <Fab style={otherStoriesBtnStyle} onClick={this.showOtherStories} variant="extended" color="secondary">
+                <i className="fas fa-book-open" style={{ marginRight: 10 }}></i>
+                Check out other users' stories
+              </Fab>
             </Paper>
           </Grid>
           <Grid item style={gridStyle} xs={8}>
@@ -89,6 +109,12 @@ export default class Profile extends Component {
           </Grid>
         </Grid>
         </Dialog>
+
+        {/* Other Stories Dialog */}
+        <OtherStories
+          open={this.state.otherStoriesOpened}
+          onClose={this.handleOtherStoriesClosed}
+        />
       </div>
     )
   }
