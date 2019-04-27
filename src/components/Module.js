@@ -83,7 +83,7 @@ export class Module extends Component {
   state = {
     success: false,
     helpVisible: false,
-    openDialog: false,
+    openSubmitDialog: false,
     tries: 0,
     openProfile: false,
     submit: false,
@@ -101,7 +101,7 @@ export class Module extends Component {
 
   // Submit
   handleRunAndSubmit = () => {
-    this.setState({ openDialog: true, tries: (this.state.tries + 1) })
+    this.setState({ success: true, openSubmitDialog: true })
   }
 
   // test submit with animation
@@ -112,7 +112,7 @@ export class Module extends Component {
     });
   }
 
-  //  go to next module
+  // go to next module
   handleNextModule = () => {
     this.setState({
       nextModule: !this.state.nextModule
@@ -120,7 +120,7 @@ export class Module extends Component {
   }
 
   handleDialogClose = () => {
-    this.setState({ openDialog: false })
+    this.setState({ openSubmitDialog: false })
   }
 
   // Profile
@@ -142,8 +142,8 @@ export class Module extends Component {
     }
 
   render() {
-    const { category, title, description, objectives, codeBlock, classes, hints } = this.props
-
+    const { category, title, description, objectives, codeBlock, classes, hints, nextModule } = this.props
+    console.log(this.props)
     return (
       <div className={classes.root}>
 
@@ -190,7 +190,7 @@ export class Module extends Component {
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
                   <pre ref={(node) => this.node = node}>
-                    <ReactFitText compressor={2.0}>
+                    <ReactFitText compressor={2.1}>
                         <code>
                           {codeBlock}
                         </code>
@@ -203,7 +203,7 @@ export class Module extends Component {
                         <i style={{display: 'block'}} className="fas fa-angle-down fa-lg"></i>
                       </div>
                     </Fab>
-                    <Fab className={classes.btnSubmit} onClick={this.handleTestAnimation} color="secondary" variant="extended">
+                    <Fab className={classes.btnSubmit} onClick={this.handleRunAndSubmit} color="secondary" variant="extended">
                       Run
                       <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
                     </Fab>
@@ -249,11 +249,12 @@ export class Module extends Component {
 
         {/* Dialog after submitting */}
         <FinishModal
-          open={this.state.openDialog}
+          open={this.state.openSubmitDialog}
           onClose={this.handleDialogClose}
           hintRequested={this.showHelp}
           tries={this.state.tries}
-          success={false}
+          success={this.state.success}
+          nextModule={nextModule}
         />
 
         {/* Profile Dialog */}

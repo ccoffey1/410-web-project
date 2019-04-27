@@ -65,11 +65,13 @@ export class StartPage extends Component {
     })
   }
 
-  handleStartClick = () => {
-    this.setState({
-      show: false
-    })
-    this.props.onBegin(this.state.name);
+  handleStartClick = (e) => {
+    if (e.keyCode == 13 && this.state.name.length > 0) {
+      this.setState({
+        show: false
+      })
+      this.props.onBegin(this.state.name);
+    }
   }
 
   handleClosed = () => {
@@ -95,6 +97,7 @@ export class StartPage extends Component {
               <label style={title}>Team Undici's Super Lame Coding Game!</label>
               <TextField 
                 onChange={this.handleChange}
+                onKeyDown={this.handleStartClick.bind(this)}
                 placeholder="What's your name?"
                 helperText={this.state.errormsg}
                 error = {this.state.nameMissing}

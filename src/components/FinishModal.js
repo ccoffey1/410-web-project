@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
 
-const nextModule = "TODO"
-
 const helpButtonColor = {
     color: '#ffb420'
 }
@@ -40,7 +38,7 @@ export class FinishModal extends Component {
     // Functional components to make it cleaner
     SetDialogText() {
         if (this.props.success) {
-            return <div>Up next: {nextModule}</div>;
+            return <div>You totally nailed it! Hit 'Next' to keep going!<h4 style={{textAlign: 'right', marginBottom: 0}}>Up next: {this.props.nextModule}</h4></div>;
         } 
         return <div>Yikes, not quite. How about you give it another go?</div>;
     }
@@ -54,7 +52,7 @@ export class FinishModal extends Component {
 
     SetPrimaryButtonText() {
         if (this.props.success) {
-            return <div>Let's Rock!</div>
+            return <div>Bring it on!</div>
         } 
 
         else if (this.props.tries > triesToHint) {

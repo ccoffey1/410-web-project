@@ -25,6 +25,10 @@ const onBegin = (playerName) => {
   name = playerName;
 }
 
+const handleInputChange = (e) => {
+  console.log(e)
+}
+
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <Router>
@@ -33,10 +37,14 @@ ReactDOM.render(
           <Route path="/Module1" render={(routeProps) => <Module {...routeProps} 
             title="Basic Java: Variables"
             category={"Welcome, " + name + "!"}
-            description={"First, we're going to learn about variables. Variables in code, like in math, can take on any value that you assign to them. However, unlike variables in math, Java variables need to be assigned a type. The type of the variable determines the value it can hold. So, for example, the type 'String' can hold text data, and the type 'int' can hold integer values. There are more types in Java, but we'll start by looking at an example of type String."}
-            objectives={"Now, let's try to assign a value to a variable. In the code on the next panel there is a variable called 'ballColor.' Change its value to 'orange.' Click 'Run' to see your code in action."}
-            hints={[<li>Variables with type "String" should be wrapped in quotes!</li>]}
-            codeBlock={["//Master JAVA Variables! \n\npublic static void main(String args[]) {\n\n  //Create a string variable\n\n  String ballColor = ",<Input style={{width: '4.4em', fontSize: '1.1em', color: 'brown'}} type='text' id='bb' placeholder='color'/>,";\n\n}"]}/>} />
+            description={["First, we're going to learn about variables. Variables in Java are similar to variables in math in the sense that they can take on any value that you assign to them.",<br/>,<br/>,"However, unlike variables in math, Java variables need to be assigned a type. The type of the variable determines the value it can hold. So, for example, the type 'String' can hold text data, and the type 'int' can hold integer values. There are more types in Java, but we'll start by focusing on Strings.",<br/>,<br/>,"Variables of the String type can accept values such as ",<code style={{color: 'brown'}}>"Hello, world!"</code>, " or ", <code style={{color: 'brown'}}>"Team Undici is Alan Hunt's favorite team!"</code>,".",<b> Notice the quotes around the String! </b>,"It's very important to note that when assigning a String type variable a value (a piece of text), this value must be wrapped in quotes. Why? Don't worry about it quite yet! You'll find out in our ", <a href="https://i.giphy.com/media/kr5PszPQawIRq/giphy.webp" rel="noopener noreferrer" target="_blank">Introductory Compiler Crash-Course</a>,"."]}
+            objectives={"In the code on the next panel there is a variable called 'ballColor'. Change its value to 'orange.' Click 'Run' to see your code in action, and check out 'Hints' if you get stuck."}
+            hints={[<li>Variables with type "String" should be wrapped in quotes!</li>, <li>Ex: <code style={{color: 'brown'}}>"hello world!"</code></li>]}
+            codeBlock={["//Master JAVA Variables! \n\npublic static void main(String args[] = test) {\n\n  //Create a string variable\n\n  String ballColor = ",<Input id="answer" style={{width: '4.4em', fontSize: '1.1em', color: 'brown'}} type='text' placeholder='color'/>,";\n\n}"]}
+            nextModule="The If Statement"
+            />
+          }/>
+          
           <Route path="/Module2" render={(routeProps) => <Module {...routeProps} title="Basic Java: If statement"
             category="Welcome!"
             description={"WOW! You are getting it so fast. Now, let's dig into conditional statements. The first conditional statement is if statement, you will use if statement a lot on the way to become a professional programmer. Java supports the usual logical conditions, you can use these conditions to perform different actions for different dicisions."}
