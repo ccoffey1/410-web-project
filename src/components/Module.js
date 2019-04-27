@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Ball from './Ball';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer, Divider } from '@material-ui/core';
 import FinishModal from './FinishModal';
 import Profile from './Profile';
 import hljs from 'highlight.js/lib/highlight';
@@ -12,6 +12,7 @@ var ReactFitText = require('react-fittext');
 
 // Inline styles for React components.
 const style = theme => ({
+
   root: {
     position: 'relative',
     padding: 20,
@@ -28,28 +29,23 @@ const style = theme => ({
     background: '#72bbf8'
   },
 
-  btnSubmit: {
-    textTransform: 'capitalize',
+  paperButtonContainer: {
+    "& button": {
+      textTransform: 'capitalize',
+      color: 'white',
+      margin: 5
+    },
     position: 'absolute',
-    color: 'white',
     bottom: '3%',
-    right: '4%',
+    right: '4%'
   },
 
-  btnHelp: {
-    display: 'block',
-    opacity: 0.5,
-    textTransform: 'capitalize',
-    background: '#ffb420',
-    color: 'white',
-    width: '30%',
-    left: '50%',
-    transform: 'translate(-50%, 0)',
-    bottom: '3%',
-    "&:hover": {
-      background: '#ffb420',
-      opacity: 1
-    }
+  help: {
+    '&:hover': {
+      background: '#9b8428'
+    },
+    background: '#f4d142',
+    width: '150px'
   },
 
   spacing: {
@@ -71,6 +67,13 @@ const style = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     fontSize: '2em'
+  },
+
+  preCodeBlock: {
+    position: 'relative',
+    display: 'block',
+    width: '100%',
+    background: 'black'
   }
 })
 
@@ -178,13 +181,6 @@ export class Module extends Component {
                   <hr />
                   <h2>Objectives</h2>
                   {objectives}
-                  <hr />
-                  <div>
-                    <Fab className={classes.btnHelp} variant='extended' onClick={this.showHelp}>
-                      Hints
-                      <i style={{ display: 'block' }} className="fas fa-angle-down fa-lg"></i>
-                    </Fab>
-                  </div>
                 </Paper>
               </Grow>
             </Grid>
@@ -194,16 +190,24 @@ export class Module extends Component {
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
                   <pre ref={(node) => this.node = node}>
-                    <ReactFitText compressor={0.7}>
-                        <code style={{ fontSize: '0.5em' }}>
+                    <ReactFitText compressor={2.0}>
+                        <code>
                           {codeBlock}
                         </code>
                     </ReactFitText>
                   </pre>
-                  <Fab className={classes.btnSubmit} onClick={this.handleTestAnimation} color="secondary" variant="extended">
-                    Run
-                    <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
-                  </Fab>
+                  <div className={classes.paperButtonContainer}>
+                    <Fab className={classes.help} onClick={this.showHelp} variant='extended'>
+                      <div>
+                        Hints
+                        <i style={{display: 'block'}} className="fas fa-angle-down fa-lg"></i>
+                      </div>
+                    </Fab>
+                    <Fab className={classes.btnSubmit} onClick={this.handleTestAnimation} color="secondary" variant="extended">
+                      Run
+                      <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
+                    </Fab>
+                  </div>
                 </Paper>
               </Grid>
             </Grow>
@@ -213,10 +217,13 @@ export class Module extends Component {
               <Grid item xs={4}>
                 <Paper className={classes.paper} elevation={5}>
                   <svg style={{ width: "300", height: "300", marginTop: "20" }}> <Ball x={this.state.submit ? 10 : 250} /> </svg>
-                  <Fab className={classes.btnSubmit} onClick={this.handleNextModule} disabled ={!this.state.success} color="secondary" variant="extended">
-                    Next
-                    <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
-                  </Fab>
+
+                  <div className={classes.paperButtonContainer}>
+                    <Fab className={classes.btnSubmit} onClick={this.handleNextModule} disabled ={!this.state.success} color="secondary" variant="extended">
+                      Next
+                      <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
+                    </Fab>
+                  </div>
                 </Paper>
               </Grid>
             </Grow>
@@ -229,7 +236,7 @@ export class Module extends Component {
               <p>
                 <h1 style={{ marginLeft: 50, marginTop: 0 }}>
                   <i className="fas fa-exclamation-triangle" style={{ marginRight: 10, color: '#ffb420' }} />
-                  Remember:
+                    Remember:
                   </h1>
                 <hr />
                 <div style={{ marginLeft: 50 }}>
