@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid, Fab, withStyles, Checkbox } from '@material-ui/core';
-import { Link } from "react-router-dom"
+import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid, Fab, withStyles, Checkbox, Button, Tooltip } from '@material-ui/core';
+import { Redirect } from "react-router-dom"
 import OtherStories from './OtherStories';
+import { defaultCipherList } from 'constants';
 
 const styles = theme => ({
   innerContainer: {
@@ -48,15 +49,14 @@ const styles = theme => ({
     right: '5%'
   },
 
-  disabled: {
-    "& h5": {
-      color: '#BDBDBD',
-      marginTop: '20px'
-    },
-    color: '#BDBDBD'
+  moduleButton: {
+    display: 'block',
+    width: '100%',
+    textAlign: 'left',
+    fontSize: '1.2em',
+    textTransform: 'capitalize'
   }
 })
-
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -65,7 +65,8 @@ function Transition(props) {
 class Profile extends Component {
 
   state = {
-    otherStoriesOpened: false
+    otherStoriesOpened: false,
+    redirect: null
   }
 
   handleClose = () => {
@@ -84,10 +85,26 @@ class Profile extends Component {
     })
   }
 
+  moduleRedirect = () => {
+    switch (this.state.redirect) {
+      case "mod1":
+        return <Redirect push to="/Module1"/>
+
+      case "mod2":
+        return <Redirect push to="/Module2"/>
+
+      case "mod3":
+        return <Redirect push to="/Module3"/>
+
+      case "mod4":
+        return <Redirect push to="/Module4"/>
+
+      default:
+    }
+  }
+
   render() {
     const { open, classes } = this.props;
-
-    console.log(classes)
 
     return (
       <div>
@@ -98,6 +115,7 @@ class Profile extends Component {
           TransitionComponent={Transition}>
 
           <div className={classes.innerContainer}>
+
             {/* Top Bar */}
             <AppBar className={{ position: 'relative' }}>
               <Toolbar>
@@ -131,14 +149,16 @@ class Profile extends Component {
                 <Grid item className={classes.gridStyle} xs={8}>
                   <Paper className={classes.paper}>
                     <div className={classes.title}>
-                      Modules Completed
+                      Your Progress
                     </div>
                     <hr/>
-                    <Link to="/Module1" onClick={this.handleClose}> <Typography variant="h5"> <Checkbox checked={true}/> Module 1 - Variables </Typography></Link>
-                    <Link to="/Module2" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 2 - If statement </Typography></Link>
-                    <Link to="/Module3" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 3 - If else statement </Typography></Link>
-                    <Link to="/Module4" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 4 - While loop </Typography></Link>
-                    <Link to="/Module5" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 5 - For loop </Typography></Link>
+                    <div>
+                      <Button className={classes.moduleButton} onClick={ this.handleClose }> <Checkbox checked={true}/> Module 1 - Variables </Button>
+                      <Button className={classes.moduleButton} href="/Module2" disabled> <Checkbox checked={false} disabled/> Module 2 - If statement </Button>
+                      <Button className={classes.moduleButton} href="/Module3" disabled> <Checkbox checked={false} disabled/> Module 3 - If else statement </Button>
+                      <Button className={classes.moduleButton} href="/Module4" disabled> <Checkbox checked={false} disabled/> Module 4 - While loop </Button>
+                      <Button className={classes.moduleButton} href="/Module5" disabled> <Checkbox checked={false} disabled/> Module 5 - For loop </Button>
+                    </div>
                   </Paper>
                 </Grid>
               </Grid>

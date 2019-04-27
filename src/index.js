@@ -69,8 +69,8 @@ ReactDOM.render(
             codeBlock={["//Master JAVA  For loop! \n\npublic static void main(String args[]) {\n\n//Create a for loop \nint b = 5;\n\n", <input type='text' id='bb'placeholder="for notation"/>, "(", <input type = 'text' id='if' placeholder='initialize a, set it to 0, a is less then b, increase a by 1'/>,")","{\n\tSystem.out.print('Hello World');\n}","\n}"]}></Module>}/>
         </div>
     </Router>
-    </MuiThemeProvider>,
-    document.getElementById('root')
+  </MuiThemeProvider>,
+  document.getElementById('root')
   )
 
 // If you want your app to work offline and load faster, you can change
