@@ -172,9 +172,9 @@ export class Module extends Component {
                     {title}
                   </div>
                   <hr />
-                  <div>
+                  <p>
                     {description}
-                  </div>
+                  </p>
                   <hr />
                   <h2>Objectives</h2>
                   {objectives}

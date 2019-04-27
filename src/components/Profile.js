@@ -1,49 +1,68 @@
 import React, { Component } from 'react'
-import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid, Button, Fab } from '@material-ui/core';
+import { Dialog, AppBar, Toolbar, Typography, Slide, IconButton, Paper, Grid, Fab, withStyles, Checkbox } from '@material-ui/core';
 import { Link } from "react-router-dom"
 import OtherStories from './OtherStories';
 
-const root = {
-  flexGrow: 1
-}
+const styles = theme => ({
+  innerContainer: {
+    position: 'relative',
+    padding: 20,
+    overflow: 'auto'
+  },
 
-const gridStyle = {
-  direction: 'row',
-  textAlign: 'left',
-  overflow: 'auto'
-}
+  containerPadding: {
+    padding: theme.spacing.unit
+  },
 
-const paperStyle = {
-  flexGrow: 1,
-  position: 'relative',
-  textAlign: 'left',
-  height: '83vh',
-  overflow: 'auto'
-}
+  title: {
+    padding: theme.spacing.unit,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    fontSize: '2em'
+  },
 
-const otherStoriesBtnStyle = {
-  position: 'absolute',
-  color: 'white',
-  textTransform: 'capitalize',
-  bottom: '5%',
-  right: '5%'
-}
+  grow: {
+    flexGrow: 1,
+    textAlign: 'left',
+  },
 
-const isDisabled = {
-  margin: 20,
-  color: '#BDBDBD'
-}
+  spacing: {
+    flexGrow: 1,
+    marginTop: 67
+  },
 
-const grayStyle = {
-  margin: 20,
-  color: '#616161'
-}
+  paper: {
+    position: 'relative',
+    padding: theme.spacing.unit * 2,
+    textAlign: 'left',
+    color: theme.palette.text.primary,
+    height: '83vh',
+    overflow: 'auto'
+  },
+
+  otherStoriesBtnStyle: {
+    position: 'absolute',
+    color: 'white',
+    textTransform: 'capitalize',
+    bottom: '5%',
+    right: '5%'
+  },
+
+  disabled: {
+    "& h5": {
+      color: '#BDBDBD',
+      marginTop: '20px'
+    },
+    color: '#BDBDBD'
+  }
+})
+
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-export default class Profile extends Component {
+class Profile extends Component {
 
   state = {
     otherStoriesOpened: false
@@ -66,48 +85,65 @@ export default class Profile extends Component {
   }
 
   render() {
-    const { open } = this.props;
+    const { open, classes } = this.props;
+
+    console.log(classes)
 
     return (
-      <div style ={root}>
+      <div>
         <Dialog
           fullScreen
           open={open}
           onClose={this.handleClose}
           TransitionComponent={Transition}>
-          <AppBar style={{ position: 'relative' }}>
-            <Toolbar>
-              <Typography variant="h6" color="inherit" style={{ flex: 1 }}>
-                My Story
+
+          <div className={classes.innerContainer}>
+            {/* Top Bar */}
+            <AppBar className={{ position: 'relative' }}>
+              <Toolbar>
+                <Typography variant="h4" color="inherit" className={classes.grow}>
+                  My Story
                 </Typography>
-              <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
-                <i class="fas fa-times fa-lg"></i>
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-        <Grid container spacing={16}>
-        <Grid item xs={12}></Grid>
-          <Grid item style={gridStyle} xs={4}>
-            <Paper style={paperStyle}>
-              <Typography variant="display1" style={grayStyle}> Your Story So Far </Typography>
-              <Typography variant="body2" style={{ margin: 20 }}> Mysteriously, an orange ball appeared in your backyard. </Typography>
-              <Fab style={otherStoriesBtnStyle} onClick={this.showOtherStories} variant="extended" color="secondary">
-                <i className="fas fa-book-open" style={{ marginRight: 10 }}></i>
-                Check out other users' stories
-              </Fab>
-            </Paper>
-          </Grid>
-          <Grid item style={gridStyle} xs={8}>
-            <Paper style={paperStyle}>
-                  <Typography variant="display1" style={grayStyle}> Modules Completed </Typography>
-                  <Link to="/Module1" style={{color: '#1565C0'}} onClick = {this.handleClose}><Typography variant="h5" style={{color: '#1565C0', margin: 20}}> Module 1 - Variables </Typography></Link>
-                  <Link to="/Module2" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()} > <Typography variant="h5" style={isDisabled}> Module 2 - If statement </Typography></Link>
-                  <Link to="/Module3" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 3 - If else statement </Typography></Link>
-                  <Link to="/Module4" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 4 - While loop </Typography></Link>
-                  <Link to="/Module5" style={{ color: '#BDBDBD', pointerEvents: "none"}} onClick={e => e.preventDefault()}> <Typography variant="h5" style={isDisabled}> Module 5 - For loop </Typography></Link>
-            </Paper>
-          </Grid>
-        </Grid>
+                <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
+                  <i class="fas fa-times fa-lg"></i>
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+
+            {/* Your Story */}
+            <div className={classes.spacing}>
+              <Grid container spacing={16}>
+                <Grid item className={classes.gridStyle} xs={4}>
+                  <Paper className={classes.paper}>
+                    <div className={classes.title}>
+                      Your Story So Far 
+                    </div>
+                    <hr/>
+                    <p> 
+                      Mysteriously, an orange ball appeared in your backyard.
+                    </p>
+                    <Fab className={classes.otherStoriesBtnStyle} onClick={this.showOtherStories} variant="extended" color="secondary">
+                      <i className="fas fa-book-open" style={{ marginRight: 10 }}></i>
+                      Check out other users' stories
+                    </Fab>
+                  </Paper>
+                </Grid>
+                <Grid item className={classes.gridStyle} xs={8}>
+                  <Paper className={classes.paper}>
+                    <div className={classes.title}>
+                      Modules Completed
+                    </div>
+                    <hr/>
+                    <Link to="/Module1" onClick={this.handleClose}> <Typography variant="h5"> <Checkbox checked={true}/> Module 1 - Variables </Typography></Link>
+                    <Link to="/Module2" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 2 - If statement </Typography></Link>
+                    <Link to="/Module3" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 3 - If else statement </Typography></Link>
+                    <Link to="/Module4" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 4 - While loop </Typography></Link>
+                    <Link to="/Module5" className={classes.disabled} onClick={e => e.preventDefault()}> <Typography variant="h5"> <Checkbox checked={false} disabled onClick={e => e.preventDefault()}/> Module 5 - For loop </Typography></Link>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </div>
+          </div>
         </Dialog>
 
         {/* Other Stories Dialog */}
@@ -119,3 +155,6 @@ export default class Profile extends Component {
     )
   }
 }
+
+export default withStyles(styles)(Profile)
+
