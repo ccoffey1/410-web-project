@@ -74,6 +74,15 @@ export class StartPage extends Component {
     }
   }
 
+  handleStartButton = () => {
+    if (this.state.name.length > 0 ) {
+      this.setState({
+        show: false
+      })
+      this.props.onBegin(this.state.name);
+    }
+  }
+
   handleClosed = () => {
     this.setState({
       redirect: true
@@ -85,7 +94,8 @@ export class StartPage extends Component {
       console.log("...redirecting to module 1!")
       return <Redirect to='/Module1'/>
     }
-  }  
+  }
+  
 
   render() {
     return (
@@ -106,7 +116,7 @@ export class StartPage extends Component {
                     }}
               />
               
-              <Fab onClick={this.handleStartClick.bind(this)} color="secondary" variant="extended" disabled={this.state.name.length === 0} style={startBtn}>
+              <Fab onClick={this.handleStartButton} color="secondary" variant="extended" disabled={this.state.name.length === 0} style={startBtn}>
                 Let's Rock
                 <i className="fas fa-angle-right fa-lg" style={{ marginLeft: 10 }}></i>
               </Fab>

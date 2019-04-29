@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer, Divider } from '@material-ui/core';
 import FinishModal from './FinishModal';
 import Profile from './Profile';
+import GameInfo from './GameInfo';
 import hljs from 'highlight.js/lib/highlight';
 import java from 'highlight.js/lib/languages/java'
 import 'highlight.js/styles/vs.css';
@@ -87,7 +88,8 @@ export class Module extends Component {
     tries: 0,
     openProfile: false,
     submit: false,
-    nextModule: false
+    nextModule: false,
+    openGameInfo: true
   }
   
   // Show help
@@ -135,6 +137,20 @@ export class Module extends Component {
       openProfile: false
     })
   }
+
+    // Game Info Dialog
+    handleGameInfoOpen = () => {
+      this.setState({
+        openGameInfo: true
+      })
+    }
+
+    handleGameInfoClose = () => {
+      this.setState({
+        redirect: true,
+        openGameInfo: false
+      });
+    }
 
     componentDidMount() {
       hljs.registerLanguage('java', java)
@@ -261,6 +277,12 @@ export class Module extends Component {
         <Profile
           open={this.state.openProfile}
           onClose={this.handleProfileClose}
+        />
+
+          {/* Game Info Dialog */}
+       <GameInfo
+          open={this.state.openGameInfo}
+          onClose={this.handleGameInfoClose}
         />
       </div>
     )
