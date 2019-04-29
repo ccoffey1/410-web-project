@@ -103,14 +103,10 @@ export class Module extends Component {
 
   // Submit
   handleRunAndSubmit = () => {
-    this.setState({ success: true, openSubmitDialog: true })
-  }
-
-  // test submit with animation
-  handleTestAnimation = () => {
-    this.setState({
+    this.setState({ 
       success: true,
-      submit: !this.state.submit
+      submit: !this.state.submit, 
+      openSubmitDialog: true 
     });
   }
 
