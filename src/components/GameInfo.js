@@ -74,7 +74,7 @@ class GameInfo extends Component {
                     <Avatar className={classes.blueAvatar}> 1</Avatar>
                     <Typography variant = "body2"> Read the instructions on the left. </Typography>
                     <Avatar className={classes.blueAvatar}> 2</Avatar>
-                    <Typography variant = "body2"> Write some code in the middle panel. </Typography>
+                    <Typography variant = "body2"> Write some code in the middle. </Typography>
                     <Avatar className={classes.blueAvatar}> 3</Avatar>
                     <Typography variant = "body2"> Run the code and see the results on the right. </Typography>
                     </Grid>
