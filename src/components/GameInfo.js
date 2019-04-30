@@ -79,6 +79,7 @@ class GameInfo extends Component {
                     <Typography variant = "body2"> Run the code and see the results on the right. </Typography>
                     </Grid>
                     <Grid container justify="center" alignItems="center">
+                    <Avatar className={classes.blueAvatar}> 4</Avatar>
                     <Typography variant = "body2"> Take a look at the "My Story" page to see what story your code generated. </Typography>
                     </Grid>
                     </DialogContent>
