@@ -27,7 +27,7 @@ class Ball extends React.PureComponent {
   render() {
     const { x } = this.state;
 
-    return <circle r="40" cx={150} cy={200} fill="purple" ref={this.circleRef} />;
+    return <circle r="75" cx={200} cy={200} fill="purple" ref={this.circleRef} />;
   }
 }
 
