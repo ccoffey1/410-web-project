@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Ball from './Ball';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer, Divider } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Grid, Paper, Fab, Grow, Slide, Drawer } from '@material-ui/core';
 import FinishModal from './FinishModal';
 import Profile from './Profile';
 import GameInfo from './GameInfo';
 import hljs from 'highlight.js/lib/highlight';
 import java from 'highlight.js/lib/languages/java'
 import 'highlight.js/styles/vs.css';
+import { Redirect } from "react-router-dom"
 
 var ReactFitText = require('react-fittext');
 
@@ -105,7 +106,7 @@ export class Module extends Component {
   handleRunAndSubmit = () => {
     this.setState({ 
       success: true,
-      submit: !this.state.submit, 
+      submit: true, 
       openSubmitDialog: true 
     });
   }
@@ -113,7 +114,7 @@ export class Module extends Component {
   // go to next module
   handleNextModule = () => {
     this.setState({
-      nextModule: !this.state.nextModule
+      nextModule: true
     });
   }
 
@@ -153,9 +154,21 @@ export class Module extends Component {
       hljs.highlightBlock(this.node)
     }
 
+    renderNextModule = (moduleName) => {
+      if (this.state.nextModule) {
+        return <Redirect to={moduleName} />
+      }
+    }
+
+    checkShowInfo = () => {
+      if (Boolean(this.props.showInfo)) {
+        return <GameInfo open={this.state.openGameInfo} onClose={this.handleGameInfoClose} />
+      }
+    }
+
   render() {
     const { category, title, description, objectives, codeBlock, classes, hints, nextModule } = this.props
-    console.log(this.props)
+
     return (
       <div className={classes.root}>
 
@@ -275,11 +288,11 @@ export class Module extends Component {
           onClose={this.handleProfileClose}
         />
 
-          {/* Game Info Dialog */}
-       <GameInfo
-          open={this.state.openGameInfo}
-          onClose={this.handleGameInfoClose}
-        />
+        {/* Game Info Dialog */}
+        {this.checkShowInfo()}
+
+        {/* Next Module */}
+        {this.renderNextModule("Module2")}
       </div>
     )
   }

@@ -91,7 +91,6 @@ export class StartPage extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      console.log("...redirecting to module 1!")
       return <Redirect to='/Module1'/>
     }
   }

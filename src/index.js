@@ -42,6 +42,7 @@ ReactDOM.render(
             hints={[<li>Variables with type "String" should be wrapped in quotes!</li>, <li>Ex: <code style={{color: 'brown'}}>"hello world!"</code></li>]}
             codeBlock={["//Master JAVA Variables! \n\npublic static void main(String args[] = test) {\n\n  //Create a string variable\n\n  String ballColor = ",<Input id="answer" style={{width: '4.4em', fontSize: '1.1em', color: 'brown'}} type='text' placeholder='color'/>,";\n\n}"]}
             nextModule="The If Statement"
+            showIntro = {true}
             />
           }/>
           
@@ -50,7 +51,7 @@ ReactDOM.render(
             description={"WOW! You are getting it so fast. Now, let's dig into conditional statements. The first conditional statement is if statement, you will use if statement a lot on the way to become a professional programmer. Java supports the usual logical conditions, you can use these conditions to perform different actions for different dicisions."}
             objectives="Fill out the text boxes, If a is less than b, then print out 'Hello World'."
             hints={[<li>Use if to specify a block of code to be executed, if a specified condition is true.</li>, <li>Make sure your "if" is lowercase.</li>]}
-            codeBlock={["//Master JAVA If statement! \n\npublic static void main(String args[]) {\n\n//Create an if statement \nint a = 3; \nint b = 5;\n\n", <input type='text' id='bb'placeholder="If notation"/>, "(", <input type = 'text' id='if' placeholder='a is less then b'/>,")","{\n\tSystem.out.print('Hello World');\n}", "\n}"]}></Module>}/>
+            codeBlock={["//Master JAVA If statement! \n\npublic static void main(String args[]) {\n\n//Create an if statement \nint a = 3; \nint b = 5;\n\n", <Input style={{width: '20px'}} type='text' id='bb'placeholder="if"/>, " (", <Input type = 'text' id='if' placeholder='a is less then b'/>,")"," {\n  System.out.print('Hello World');\n }", "\n}"]}></Module>}/>
           <Route path="/Module3" render={(routeProps) => <Module {...routeProps} 
             title="If/else statement"
             category="Welcome!"
