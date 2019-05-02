@@ -91,10 +91,9 @@ export class StartPage extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/Module1'/>
+      return <Redirect to='/module1'/>
     }
   }
-  
 
   render() {
     return (
@@ -103,7 +102,7 @@ export class StartPage extends Component {
           <div style={frame}>
             <div style={titleContainer}>
               <hr style={line}/>
-              <label style={title}>Team Undici's Super Lame Coding Game!</label>
+              <label style={title}>Learn Introductory Java with Undici</label>
               <TextField 
                 onChange={this.handleChange}
                 onKeyDown={this.handleStartClick.bind(this)}

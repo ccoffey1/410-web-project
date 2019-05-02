@@ -292,7 +292,7 @@ export class Module extends Component {
         {this.checkShowInfo()}
 
         {/* Next Module */}
-        {this.renderNextModule("Module2")}
+        {this.renderNextModule("/module2")}
       </div>
     )
   }

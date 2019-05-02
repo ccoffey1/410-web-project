@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "homepage": "http://webdev.cse.buffalo.edu/cse410/undici/web-project",
+  "homepage": "http://webdev.cse.buffalo.edu/cse410/undici/gamification",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
